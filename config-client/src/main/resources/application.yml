@@ -1,20 +1,22 @@
+server:
+  port: 8771
 spring:
   application:
     name: config-client
   config:
-    import: "optional:configserver:"
+    import: "optional:configserver:http://localhost:8888"
   cloud:
     config:
       enabled: true
       discovery:
         enabled: true
+        service-id: config-server
 eureka:
   client:
-    port: 8771
     prefer-same-zone-eureka: true
     service-url:
       default-zone:
-        - ${EUREKA_URI:http://localhost:8888/eureka}
+        - ${EUREKA_URI:http://localhost:8761/eureka}
     enabled: true
-
-
+    instance:
+      prefer-ip-address: true
