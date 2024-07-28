@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: client-service
+  config:
+    import: "optional:configserver:"
+  data:
+    mongodb:
+      database: db
+
+server:
+  port: 0
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.uuid}
