@@ -1,0 +1,41 @@
+#spring:
+#  application:
+#    name: gateway-service
+#  cloud:
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#          lower-case-service-id: true
+#      routes:
+#        - id: test
+#          uri: lb://client-service
+#          predicates:
+#            - Path=/api/client/books
+#            - Method=GET
+#          filters:
+#            - name: Custom
+#
+#server:
+#  port: 8082
+#
+#eureka:
+#  client:
+#    service-url:
+#      default-zone: ${EUREKA_URI:http://localhost:8761/eureka}
+#  instance:
+#    prefer-ip-address: true
+
+spring:
+  application:
+    name: gateway-service
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true
