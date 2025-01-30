@@ -3,9 +3,16 @@ spring:
     name: book-service
   config:
     import: "optional:configserver:"
+  profiles:
+    active: native
   data:
     mongodb:
-      database: db
+      database: mongodb
+  sleuth:
+    sampler:
+      probability: 2.0
+  zipkin:
+    enabled: true
 
 server:
   port: 0

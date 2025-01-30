@@ -6,6 +6,11 @@ spring:
   data:
     mongodb:
       database: db
+  sleuth:
+    sampler:
+      probability: 2.0
+  zipkin:
+    enabled: true
 
 server:
   port: 0
@@ -17,3 +22,7 @@ eureka:
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${random.uuid}
+
+feign:
+  circuitbreaker:
+    enabled: true

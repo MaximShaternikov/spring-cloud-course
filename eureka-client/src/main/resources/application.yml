@@ -1,14 +1,15 @@
+spring:
+  application:
+    name: eureka-client
+
 eureka:
   client:
-    port: 8762
-    prefer-same-zone-eureka: true #6(server) использовать сервер eureka в той же зоне;
     service-url:
-      default-zone:
-      - ${EUREKA_URI:http://localhost:8761/eureka} #1(client) укажите явный маршрут к серверу eureka (serviceUrl)
-    enabled: true
-    eureka-service-url-poll-interval-seconds: 35 #3(client) укажите интервал в 35 сек через который клиент шлет эхо запрос на сервер
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    eureka-service-url-poll-interval-seconds: 35
   instance:
-    appname: test-client
-    prefer-ip-address: true  #2(client) использовать IP адрес
-#    lease-renewal-interval-in-seconds: 30
-#    metadataMap.zone: zone1 #6(server) использовать сервер eureka в той же зоне;
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 30
+
+server:
+  port: 0
